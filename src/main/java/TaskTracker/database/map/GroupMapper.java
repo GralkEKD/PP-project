@@ -11,10 +11,10 @@ public class GroupMapper implements RowMapper<Group> {
 
     @Override
     public Group mapRow(ResultSet resultSet, int rowNumber) throws SQLException {
-        return new Group(
-                resultSet.getInt("groupid"),
-                resultSet.getString("groupname"),
-                resultSet.getString("grouppassword")
-        );
+        Group group = new Group();
+        group.setGroupID(resultSet.getInt("groupid"));
+        group.setGroupName(resultSet.getString("groupname"));
+        group.setGroupPassword(resultSet.getString("grouppassword"));
+        return group;
     }
 }
