@@ -1,5 +1,6 @@
 package TaskTracker.database.repository;
 
+import TaskTracker.database.Query;
 import TaskTracker.database.beans.User;
 import TaskTracker.database.map.UserMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -19,12 +20,12 @@ public class UserRepositoryImpl implements UserRepository {
         this.userMapper = userMapper;
     }
 
+    @Override
     public Optional<User> getUserByUserLogin(String userLogin) {
-        String GET_USER_BY_USER_LOGIN = "SELECT * FROM users WHERE userlogin = :userLogin"; // Mock
-        MapSqlParameterSource params = new MapSqlParameterSource();
+        var params = new MapSqlParameterSource();
         params.addValue("userLogin", userLogin);
         return jdbcTemplate.query(
-                GET_USER_BY_USER_LOGIN,
+                Query.GET_USER_BY_USER_LOGIN.toString(),
                 params,
                 userMapper
         ).stream().findFirst();
