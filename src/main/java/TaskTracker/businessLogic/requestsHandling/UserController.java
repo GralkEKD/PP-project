@@ -2,12 +2,10 @@ package TaskTracker.businessLogic.requestsHandling;
 
 import TaskTracker.businessLogic.services.UserService;
 import TaskTracker.database.beans.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "localhost")
+@RequestMapping(value = "user")
 public class UserController {
 
     private final UserService userService;
@@ -16,8 +14,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public User getUser(String userLogin) {
+    @GetMapping(value = "/{userLogin}")
+    public User getUser(@PathVariable("userLogin") String userLogin) {
         return userService.getUser(userLogin);
+    }
+
+    @PostMapping
+    public void insertUser(User user) {
+        userService.insertUser(user);
     }
 }

@@ -10,6 +10,6 @@ public class UserNotFoundException extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return "Wrong User Login: \"" + userLogin + "\"";
+        return "User with login \"" + userLogin + "\" not found";
     }
 }

@@ -2,7 +2,7 @@ package TaskTracker.database.beans;
 
 import java.util.Objects;
 
-public class Group {
+public class Group implements java.io.Serializable{
     private int groupID;
     private String groupName;
     private String groupPassword;
