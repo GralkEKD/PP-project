@@ -1,6 +1,6 @@
 package TaskTracker.businessLogic.services;
 
-import TaskTracker.businessLogic.requestsHandling.UserNotFoundException;
+import TaskTracker.businessLogic.requestsHandling.beansExceptions.UserNotFoundException;
 import TaskTracker.database.beans.User;
 import TaskTracker.database.map.UserMapper;
 import TaskTracker.database.repository.UserRepositoryImpl;

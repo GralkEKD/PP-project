@@ -1,6 +1,6 @@
-package TaskTracker.businessLogic.requestsHandling;
+package TaskTracker.businessLogic.requestsHandling.beansExceptions;
 
-public class UserNotFoundException extends RuntimeException {
+public class UserNotFoundException extends EntityNotFoundException {
 
     private final String userLogin;
 

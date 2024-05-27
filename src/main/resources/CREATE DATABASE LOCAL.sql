@@ -42,8 +42,8 @@ GroupID - ID группы, к которой пользователь прина
 */
 CREATE TABLE UserAndGroup
 (
-	UserName CHARACTER VARYING(30) REFERENCES users (UserLogin),
-	GroupID INTEGER REFERENCES usergroups (GroupID),
+	UserLogin CHARACTER VARYING(30) REFERENCES users (UserLogin) ON DELETE CASCADE,
+	GroupID INTEGER REFERENCES usergroups (GroupID) ON DELETE CASCADE,
 	PRIMARY KEY (UserName, GroupID) -- Составной ПК - состоит из логина пользователя и ID группы
 );
 

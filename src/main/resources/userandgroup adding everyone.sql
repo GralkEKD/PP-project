@@ -1,5 +1,5 @@
 INSERT INTO public.userandgroup(
-	username, groupid)
+	userlogin, groupid)
 	VALUES ('GralkEKD', 0),
 	('Irina6404', 0),
 	('aleksandrevdokimov', 0),

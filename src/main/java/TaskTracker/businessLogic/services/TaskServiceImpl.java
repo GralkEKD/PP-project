@@ -1,6 +1,6 @@
 package TaskTracker.businessLogic.services;
 
-import TaskTracker.businessLogic.requestsHandling.TaskNotFoundException;
+import TaskTracker.businessLogic.requestsHandling.beansExceptions.TaskNotFoundException;
 import TaskTracker.database.beans.Task;
 import TaskTracker.database.repository.TaskRepository;
 import org.springframework.stereotype.Service;

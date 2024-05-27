@@ -4,19 +4,25 @@ import TaskTracker.database.beans.User;
 import TaskTracker.database.map.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 @Repository
+@Transactional
 @PropertySource("queries.properties")
 public class UserRepositoryImpl implements UserRepository {
 
+    @Autowired
     private final UserMapper userMapper;
+    @Autowired
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private static final Logger userRepositoryLogger = LoggerFactory.getLogger(UserRepositoryImpl.class);
@@ -25,6 +31,8 @@ public class UserRepositoryImpl implements UserRepository {
     String getUserByLogin;
     @Value("${insertUser}")
     String insertUser;
+    @Value("${addUserToGroup}")
+    String addUserToGroup;
 
     public UserRepositoryImpl(UserMapper userMapper, NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -43,21 +51,22 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void insertUser(User user) {
-        MapSqlParameterSource[] params = new MapSqlParameterSource[] {
-                new MapSqlParameterSource(),
-                new MapSqlParameterSource()
-        };
-        params[0].addValue("userLogin", user.getUserLogin())
-                .addValue("userName", user.getUserName())
-                .addValue("userPassword", user.getUserPassword());
-        params[1].addValue("userLogin", user.getUserLogin());
-        // Добавить логгер (update возвращает int - количество задействованных строк)
-        int[] affectedRows = jdbcTemplate.batchUpdate(
-                insertUser,
-                params
-        );
-        userRepositoryLogger.info("INSERT INTO users: " + affectedRows[0] + " rows affected");
-        userRepositoryLogger.info("INSERT INTO userandgroup: " + affectedRows[1] + " rows affected");
+    public User insertUser(User user) {
+        int affectedRows;
+        var params = new MapSqlParameterSource();
+        params.addValue("userLogin", user.getUserLogin());
+        params.addValue("userName", user.getUserName());
+        params.addValue("userPassword", user.getUserPassword());
+        params.addValue("groupId", 0);
+
+        userRepositoryLogger.info("Executing SQL: " + insertUser);
+        affectedRows = jdbcTemplate.update(insertUser, params);
+        userRepositoryLogger.info("INSERT INTO users: " + affectedRows + " rows affected");
+
+        userRepositoryLogger.info("Executing SQL: " + addUserToGroup);
+        affectedRows = jdbcTemplate.update(addUserToGroup, params);
+        userRepositoryLogger.info("INSERT INTO userandgroup: " + affectedRows + " rows affected");
+
+        return user;
     }
 }

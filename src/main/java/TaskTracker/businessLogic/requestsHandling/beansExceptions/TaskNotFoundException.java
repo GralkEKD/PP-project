@@ -1,6 +1,6 @@
-package TaskTracker.businessLogic.requestsHandling;
+package TaskTracker.businessLogic.requestsHandling.beansExceptions;
 
-public class TaskNotFoundException extends RuntimeException {
+public class TaskNotFoundException extends EntityNotFoundException {
     private final int taskId;
 
     public TaskNotFoundException(int taskId) {

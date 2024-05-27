@@ -1,6 +1,6 @@
 package TaskTracker.businessLogic.services;
 
-import TaskTracker.businessLogic.requestsHandling.GroupNotFoundException;
+import TaskTracker.businessLogic.requestsHandling.beansExceptions.GroupNotFoundException;
 import TaskTracker.database.beans.Group;
 import TaskTracker.database.repository.GroupRepository;
 import org.springframework.stereotype.Service;

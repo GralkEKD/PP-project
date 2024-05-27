@@ -1,15 +1,17 @@
 package TaskTracker.businessLogic.services;
 
-import TaskTracker.businessLogic.requestsHandling.UserNotFoundException;
+import TaskTracker.businessLogic.requestsHandling.beansExceptions.UserNotFoundException;
 import TaskTracker.database.beans.User;
 import TaskTracker.database.repository.UserRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private final UserRepositoryImpl userRepository;
 
     private static final Logger userServiceLogger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void insertUser(User user) {
-        userRepository.insertUser(user);
+    public User insertUser(User user) {
+        return userRepository.insertUser(user);
     }
 }

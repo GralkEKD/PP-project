@@ -8,5 +8,5 @@ public interface UserRepository {
 
     Optional<User> getUserByUserLogin(String userLogin);
 
-    void insertUser(User user);
+    User insertUser(User user);
 }

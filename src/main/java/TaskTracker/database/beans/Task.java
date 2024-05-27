@@ -4,12 +4,12 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public final class Task {
-    private int taskID;
+    private long taskID;
     private String creatorLogin;
-    private int creatorGroupID;
+    private long creatorGroupID;
     private String taskName;
     private String taskDescription;
-    private int taskPriority;
+    private long taskPriority;
     private boolean isFinished;
     private Timestamp taskExpiryDate;
 
@@ -36,11 +36,11 @@ public final class Task {
         this.taskExpiryDate = taskExpiryDate;
     }
 
-    public void setTaskID(int taskID) {
+    public void setTaskID(long taskID) {
         this.taskID = taskID;
     }
 
-    public int getTaskID() {
+    public long getTaskID() {
         return taskID;
     }
 
@@ -52,11 +52,11 @@ public final class Task {
         this.creatorLogin = creatorLogin;
     }
 
-    public int getCreatorGroupID() {
+    public long getCreatorGroupID() {
         return creatorGroupID;
     }
 
-    public void setCreatorGroupID(int creatorGroupID) {
+    public void setCreatorGroupID(long creatorGroupID) {
         this.creatorGroupID = creatorGroupID;
     }
 
@@ -76,11 +76,11 @@ public final class Task {
         this.taskDescription = taskDescription;
     }
 
-    public int getTaskPriority() {
+    public long getTaskPriority() {
         return taskPriority;
     }
 
-    public void setTaskPriority(int taskPriority) {
+    public void setTaskPriority(long taskPriority) {
         this.taskPriority = taskPriority;
     }
 

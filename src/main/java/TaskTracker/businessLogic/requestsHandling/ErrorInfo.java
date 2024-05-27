@@ -1,6 +1,6 @@
 package TaskTracker.businessLogic.requestsHandling;
 
 public record ErrorInfo(
-        Exception exception,
+        RuntimeException exception,
         String message
 ) {}
