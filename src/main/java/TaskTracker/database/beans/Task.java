@@ -4,26 +4,26 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public final class Task {
-    private long taskID;
+    private Long taskID;
     private String creatorLogin;
-    private long creatorGroupID;
+    private Long creatorGroupID;
     private String taskName;
     private String taskDescription;
-    private long taskPriority;
-    private boolean isFinished;
+    private Long taskPriority;
+    private Boolean isFinished;
     private Timestamp taskExpiryDate;
 
     public Task() {
     }
 
     public Task(
-            int taskID,
+            Long taskID,
             String creatorLogin,
-            int creatorGroupID,
+            Long creatorGroupID,
             String taskName,
             String taskDescription,
-            int taskPriority,
-            boolean isFinished,
+            Long taskPriority,
+            Boolean isFinished,
             Timestamp taskExpiryDate
     ) {
         this.taskID = taskID;
@@ -36,11 +36,11 @@ public final class Task {
         this.taskExpiryDate = taskExpiryDate;
     }
 
-    public void setTaskID(long taskID) {
+    public void setTaskID(Long taskID) {
         this.taskID = taskID;
     }
 
-    public long getTaskID() {
+    public Long getTaskID() {
         return taskID;
     }
 
@@ -52,11 +52,11 @@ public final class Task {
         this.creatorLogin = creatorLogin;
     }
 
-    public long getCreatorGroupID() {
+    public Long getCreatorGroupID() {
         return creatorGroupID;
     }
 
-    public void setCreatorGroupID(long creatorGroupID) {
+    public void setCreatorGroupID(Long creatorGroupID) {
         this.creatorGroupID = creatorGroupID;
     }
 
@@ -76,19 +76,19 @@ public final class Task {
         this.taskDescription = taskDescription;
     }
 
-    public long getTaskPriority() {
+    public Long getTaskPriority() {
         return taskPriority;
     }
 
-    public void setTaskPriority(long taskPriority) {
+    public void setTaskPriority(Long taskPriority) {
         this.taskPriority = taskPriority;
     }
 
-    public boolean isFinished() {
+    public Boolean isFinished() {
         return isFinished;
     }
 
-    public void setFinished(boolean finished) {
+    public void setFinished(Boolean finished) {
         isFinished = finished;
     }
 
@@ -105,13 +105,13 @@ public final class Task {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (Task) obj;
-        return this.taskID == that.taskID &&
+        return Objects.equals(this.taskID, that.taskID) &&
                 Objects.equals(this.creatorLogin, that.creatorLogin) &&
-                this.creatorGroupID == that.creatorGroupID &&
+                Objects.equals(this.creatorGroupID, that.creatorGroupID) &&
                 Objects.equals(this.taskName, that.taskName) &&
                 Objects.equals(this.taskDescription, that.taskDescription) &&
-                this.taskPriority == that.taskPriority &&
-                this.isFinished == that.isFinished &&
+                Objects.equals(this.taskPriority, that.taskPriority) &&
+                Objects.equals(this.isFinished, that.isFinished) &&
                 Objects.equals(this.taskExpiryDate, that.taskExpiryDate);
     }
 

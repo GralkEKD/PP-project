@@ -3,14 +3,14 @@ package TaskTracker.database.beans;
 import java.util.Objects;
 
 public class Group implements java.io.Serializable{
-    private long groupID;
+    private Long groupID;
     private String groupName;
     private String groupPassword;
 
     public Group() {}
 
     public Group(
-            int groupID,
+            Long groupID,
             String groupName,
             String groupPassword
     ) {
@@ -19,7 +19,7 @@ public class Group implements java.io.Serializable{
         this.groupPassword = groupPassword;
     }
 
-    public void setGroupID(long groupID) {
+    public void setGroupID(Long groupID) {
         this.groupID = groupID;
     }
 
@@ -31,7 +31,7 @@ public class Group implements java.io.Serializable{
         this.groupPassword = groupPassword;
     }
 
-    public long getGroupID() {
+    public Long getGroupID() {
         return groupID;
     }
 
