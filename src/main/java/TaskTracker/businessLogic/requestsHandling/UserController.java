@@ -22,8 +22,9 @@ public class UserController {
 
     @GetMapping(value = "/{userLogin}", produces="application/json")
     public User getUser(@PathVariable("userLogin") String userLogin) {
-        logger.info("Sending object: " + userService.getUser(userLogin));
-        return userService.getUser(userLogin);
+        User user = userService.getUser(userLogin);
+        logger.info("Sending object: " + user);
+        return user;
     }
 
     @PostMapping(value="/sign_up", consumes="application/json", produces="application/json")
