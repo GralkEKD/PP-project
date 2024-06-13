@@ -48,7 +48,7 @@ public class Group implements java.io.Serializable{
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (Group) obj;
-        return this.groupID == that.groupID &&
+        return Objects.equals(this.groupID, that.groupID) &&
                 Objects.equals(this.groupName, that.groupName) &&
                 Objects.equals(this.groupPassword, that.groupPassword);
     }

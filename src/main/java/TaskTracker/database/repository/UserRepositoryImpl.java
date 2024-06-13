@@ -54,7 +54,6 @@ public class UserRepositoryImpl implements UserRepository {
     public User insertUser(User user) {
         int affectedRows;
         var params = new MapSqlParameterSource();
-        params.addValue("userLogin", user.getUserLogin());
         params.addValue("userName", user.getUserName());
         params.addValue("userPassword", user.getUserPassword());
         params.addValue("groupId", 0);

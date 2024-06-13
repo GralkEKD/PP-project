@@ -21,9 +21,9 @@ public class GroupServiceImplTest {
             new NamedParameterJdbcTemplate(new JdbcTemplate())
     ) {
         @Override
-        public Optional<Group> getGroupByGroupId(int id) {
-            if (id == 1) {
-                return Optional.of(new Group(1, "Test Task", "qwerty"));
+        public Optional<Group> getGroupByGroupId(Long id) {
+            if (id.equals(1L)) {
+                return Optional.of(new Group(1L, "Test Task", "qwerty"));
             }
             throw new GroupNotFoundException(id);
         }
@@ -31,8 +31,8 @@ public class GroupServiceImplTest {
 
     @Test
     void givenExistentTaskId_whenGetGroupById_thenReturnGroup() {
-        Group expectedGroup = new Group(1, "Test Task", "qwerty");
-        Group actualGroup = new GroupServiceImpl(mockRepository).getGroup(1);
+        Group expectedGroup = new Group(1L, "Test Task", "qwerty");
+        Group actualGroup = new GroupServiceImpl(mockRepository).getGroup(1L);
         Assertions.assertEquals(expectedGroup, actualGroup);
     }
 
@@ -40,7 +40,7 @@ public class GroupServiceImplTest {
     void givenNonExistentTaskId_whenGetGroupById_thenThrowGroupNotFoundException() {
         Assertions.assertThrows(
                 GroupNotFoundException.class,
-                () -> new GroupServiceImpl(mockRepository).getGroup(0),
+                () -> new GroupServiceImpl(mockRepository).getGroup(0L),
                 "Group with id \"0\" not found"
         );
     }

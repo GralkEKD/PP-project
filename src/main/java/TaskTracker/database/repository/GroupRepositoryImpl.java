@@ -26,7 +26,7 @@ public class GroupRepositoryImpl implements GroupRepository {
     }
 
     @Override
-    public Optional<Group> getGroupByGroupId(int id) {
+    public Optional<Group> getGroupByGroupId(Long id) {
         var parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("groupid", id);
         return jdbcTemplate.query(

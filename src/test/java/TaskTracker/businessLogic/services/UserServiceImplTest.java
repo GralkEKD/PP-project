@@ -22,7 +22,7 @@ public class UserServiceImplTest {
         @Override
         public Optional<User> getUserByUserLogin(String userLogin) {
             if (userLogin.equals("Aleksandr")) {
-                return Optional.of(new User("Aleksandr", "alex", "1234"));
+                return Optional.of(new User("Aleksandr", "1234"));
             }
             throw new UserNotFoundException(userLogin);
         }
@@ -30,7 +30,7 @@ public class UserServiceImplTest {
 
     @Test
     void givenExistingUserLogin_whenGetUserByUserLogin_thenReturnOptionalUser() {
-        User expectedUser = new User("Aleksandr", "alex", "1234");
+        User expectedUser = new User("Aleksandr", "1234");
         User actualUser = new UserServiceImpl(mockRepository).getUser("Aleksandr");
         Assertions.assertEquals(expectedUser, actualUser);
     }

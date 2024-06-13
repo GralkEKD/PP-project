@@ -5,5 +5,5 @@ import TaskTracker.database.beans.Group;
 import java.util.Optional;
 
 public interface GroupRepository {
-    Optional<Group> getGroupByGroupId(int id);
+    Optional<Group> getGroupByGroupId(Long id);
 }

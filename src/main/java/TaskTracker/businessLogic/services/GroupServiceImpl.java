@@ -14,7 +14,7 @@ public class GroupServiceImpl implements GroupService{
         this.groupRepository = groupRepository;
     }
 
-    public Group getGroup(int id) {
+    public Group getGroup(Long id) {
         return groupRepository.getGroupByGroupId(id)
                 .orElseThrow(() -> new GroupNotFoundException(id));
     }
