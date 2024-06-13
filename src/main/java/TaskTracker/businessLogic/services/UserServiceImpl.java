@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public User getUser(String userLogin) {
-        User user = userRepository.getUserByUserLogin(userLogin)
-                .orElseThrow(() -> new UserNotFoundException(userLogin));
+    public User getUser(String userName) {
+        User user = userRepository.getUserByUserLogin(userName)
+                .orElseThrow(() -> new UserNotFoundException(userName));
         userServiceLogger.info("Received user: " + user);
         return user;
     }
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return org.springframework.security.core.userdetails.User
-                .builder()
+                .withDefaultPasswordEncoder()
                 .username(getUser(username).getUserName())
                 .password(getUser(username).getUserPassword())
                 .authorities("USER")

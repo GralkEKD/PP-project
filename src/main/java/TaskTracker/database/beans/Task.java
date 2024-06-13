@@ -1,6 +1,7 @@
 package TaskTracker.database.beans;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public final class Task {
@@ -11,7 +12,7 @@ public final class Task {
     private String taskDescription;
     private Long taskPriority;
     private Boolean isFinished;
-    private Timestamp taskExpiryDate;
+    private LocalDateTime taskExpiryDate;
 
     public Task() {
     }
@@ -24,7 +25,7 @@ public final class Task {
             String taskDescription,
             Long taskPriority,
             Boolean isFinished,
-            Timestamp taskExpiryDate
+            LocalDateTime taskExpiryDate
     ) {
         this.taskID = taskID;
         this.creatorLogin = creatorLogin;
@@ -92,11 +93,11 @@ public final class Task {
         isFinished = finished;
     }
 
-    public Timestamp getTaskExpiryDate() {
+    public LocalDateTime getTaskExpiryDate() {
         return taskExpiryDate;
     }
 
-    public void setTaskExpiryDate(Timestamp taskExpiryDate) {
+    public void setTaskExpiryDate(LocalDateTime taskExpiryDate) {
         this.taskExpiryDate = taskExpiryDate;
     }
 

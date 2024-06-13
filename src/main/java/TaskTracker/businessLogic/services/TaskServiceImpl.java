@@ -17,7 +17,7 @@ public class TaskServiceImpl implements TaskService{
         this.taskRepository = taskRepository;
     }
 
-    public Task getTask(int taskId) {
+    public Task getTask(Long taskId) {
         return taskRepository.getTaskById(taskId)
                 .orElseThrow(() -> new TaskNotFoundException(taskId));
     }

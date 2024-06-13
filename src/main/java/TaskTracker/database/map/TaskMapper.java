@@ -19,7 +19,7 @@ public class TaskMapper implements RowMapper<Task> {
         task.setTaskDescription(resultSet.getString("taskdescription"));
         task.setTaskPriority(resultSet.getLong("taskpriority"));
         task.setFinished(resultSet.getBoolean("taskstatus"));
-        task.setTaskExpiryDate(resultSet.getTimestamp("taskexpirydate"));
+        task.setTaskExpiryDate(resultSet.getTimestamp("taskexpirydate").toLocalDateTime());
         return task;
     }
 }

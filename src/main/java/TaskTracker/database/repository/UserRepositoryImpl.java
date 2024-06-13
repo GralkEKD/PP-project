@@ -41,7 +41,7 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public Optional<User> getUserByUserLogin(String userLogin) {
         var params = new MapSqlParameterSource();
-        params.addValue("userLogin", userLogin);
+        params.addValue("userName", userLogin);
         return jdbcTemplate.query(
                 getUserByLogin,
                 params,

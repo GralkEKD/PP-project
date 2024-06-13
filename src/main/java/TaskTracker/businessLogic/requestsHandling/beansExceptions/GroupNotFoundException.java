@@ -1,9 +1,9 @@
 package TaskTracker.businessLogic.requestsHandling.beansExceptions;
 
 public class GroupNotFoundException extends EntityNotFoundException {
-    private final int groupId;
+    private final Long groupId;
 
-    public GroupNotFoundException(int groupId) {
+    public GroupNotFoundException(Long groupId) {
         this.groupId = groupId;
     }
 

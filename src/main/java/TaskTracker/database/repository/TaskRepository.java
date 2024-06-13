@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface TaskRepository {
 
-    Optional<Task> getTaskById(int taskId);
+    Optional<Task> getTaskById(Long taskId);
 
     List<Task> getTasksOfUser(String userName);
 

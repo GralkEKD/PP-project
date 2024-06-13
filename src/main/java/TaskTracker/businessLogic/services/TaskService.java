@@ -5,7 +5,7 @@ import TaskTracker.database.beans.Task;
 import java.util.List;
 
 public interface TaskService {
-    Task getTask(int taskId);
+    Task getTask(Long taskId);
 
     List<Task> getTasksOfUser(String userName);
 

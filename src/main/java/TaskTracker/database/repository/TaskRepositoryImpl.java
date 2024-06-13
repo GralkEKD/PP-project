@@ -39,7 +39,7 @@ public class TaskRepositoryImpl implements TaskRepository{
     }
 
     @Override
-    public Optional<Task> getTaskById(int taskId) {
+    public Optional<Task> getTaskById(Long taskId) {
         var params = new MapSqlParameterSource();
         params.addValue("userTaskId", taskId);
         logger.info("Executing SQL " + getTaskById);
@@ -94,7 +94,7 @@ public class TaskRepositoryImpl implements TaskRepository{
     @Override
     public void addTask(Task task) {
         var params = new MapSqlParameterSource();
-        params.addValue("creatorId", task.getCreatorLogin());
+        params.addValue("creatorLogin", task.getCreatorLogin());
         params.addValue("creatorGroupId", task.getCreatorGroupID());
         params.addValue("taskName", task.getTaskName());
         params.addValue("taskDescription", task.getTaskDescription());

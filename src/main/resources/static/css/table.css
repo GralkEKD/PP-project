@@ -1,0 +1,26 @@
+  #task-table {
+    font-family: "Comfortaa", sans-serif;
+    color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
+  }
+  
+  #task-table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #task-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    max-width: 25vw;
+    overflow: hidden;
+  }
+
+  #task-table tr:nth-child(even) {
+      background: var(--select-bg);
+  }

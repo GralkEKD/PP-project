@@ -10,6 +10,6 @@ public class UserNotFoundException extends EntityNotFoundException {
 
     @Override
     public String getMessage() {
-        return "User with login \"" + userLogin + "\" not found";
+        return "User with login \"" + userLogin + "\" not found;)";
     }
 }
