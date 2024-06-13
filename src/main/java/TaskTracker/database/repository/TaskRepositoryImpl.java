@@ -80,9 +80,9 @@ public class TaskRepositoryImpl implements TaskRepository{
         params.addValue("newTaskName", task.getTaskName());
         params.addValue("newTaskDescription", task.getTaskDescription());
         params.addValue("newTaskPriority", task.getTaskPriority());
-        params.addValue("newTaskStatus", task.isFinished());
+        params.addValue("newTaskStatus", task.getIsFinished());
         params.addValue("newTaskDeadline", task.getTaskExpiryDate());
-        params.addValue("taskId", task.getTaskID());
+        params.addValue("taskId", task.getTaskId());
         logger.info("Executing SQL " + updateTask);
         int affectedRows = jdbcTemplate.update(
                 updateTask,
@@ -95,11 +95,11 @@ public class TaskRepositoryImpl implements TaskRepository{
     public void addTask(Task task) {
         var params = new MapSqlParameterSource();
         params.addValue("creatorLogin", task.getCreatorLogin());
-        params.addValue("creatorGroupId", task.getCreatorGroupID());
+        params.addValue("creatorGroupId", task.getCreatorGroupId());
         params.addValue("taskName", task.getTaskName());
         params.addValue("taskDescription", task.getTaskDescription());
         params.addValue("taskPriority", task.getTaskPriority());
-        params.addValue("taskStatus", task.isFinished());
+        params.addValue("taskStatus", task.getIsFinished());
         params.addValue("taskDeadline", task.getTaskExpiryDate());
         logger.info("Executing SQL " + addTask);
         int affectedRows = jdbcTemplate.update(

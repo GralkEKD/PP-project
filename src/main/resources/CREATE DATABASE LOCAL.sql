@@ -17,9 +17,8 @@ CREATE DATABASE "TaskTrackerDB"
 
 CREATE TABLE Users -- Таблица пользователей
 (
-	UserName CHARACTER VARYING(30) NOT NULL, -- Имя пользователя - не уникальное
-	UserLogin CHARACTER VARYING(30) UNIQUE NOT NULL PRIMARY KEY, -- Логин пользователя - уникальный (ПК)
-	UserPassword CHARACTER VARYING(30) NOT NULL -- Пароль пользователя
+	UserName CHARACTER VARYING(30) NOT NULL PRIMARY KEY, -- Имя пользователя - не уникальное
+	UserPassword CHARACTER VARYING(60) NOT NULL -- Пароль пользователя
 );
 
 INSERT INTO Users (UserName, UserLogin, UserPassword) VALUES ('Irina', 'Irina6404', '6404');

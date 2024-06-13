@@ -1,13 +1,12 @@
 package TaskTracker.database.beans;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public final class Task {
-    private Long taskID;
+    private Long taskId;
     private String creatorLogin;
-    private Long creatorGroupID;
+    private Long creatorGroupId;
     private String taskName;
     private String taskDescription;
     private Long taskPriority;
@@ -18,18 +17,18 @@ public final class Task {
     }
 
     public Task(
-            Long taskID,
+            Long taskId,
             String creatorLogin,
-            Long creatorGroupID,
+            Long creatorGroupId,
             String taskName,
             String taskDescription,
             Long taskPriority,
             Boolean isFinished,
             LocalDateTime taskExpiryDate
     ) {
-        this.taskID = taskID;
+        this.taskId = taskId;
         this.creatorLogin = creatorLogin;
-        this.creatorGroupID = creatorGroupID;
+        this.creatorGroupId = creatorGroupId;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.taskPriority = taskPriority;
@@ -37,12 +36,12 @@ public final class Task {
         this.taskExpiryDate = taskExpiryDate;
     }
 
-    public void setTaskID(Long taskID) {
-        this.taskID = taskID;
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 
-    public Long getTaskID() {
-        return taskID;
+    public Long getTaskId() {
+        return taskId;
     }
 
     public String getCreatorLogin() {
@@ -53,12 +52,12 @@ public final class Task {
         this.creatorLogin = creatorLogin;
     }
 
-    public Long getCreatorGroupID() {
-        return creatorGroupID;
+    public Long getCreatorGroupId() {
+        return creatorGroupId;
     }
 
-    public void setCreatorGroupID(Long creatorGroupID) {
-        this.creatorGroupID = creatorGroupID;
+    public void setCreatorGroupId(Long creatorGroupId) {
+        this.creatorGroupId = creatorGroupId;
     }
 
     public String getTaskName() {
@@ -85,11 +84,11 @@ public final class Task {
         this.taskPriority = taskPriority;
     }
 
-    public Boolean isFinished() {
+    public Boolean getIsFinished() {
         return isFinished;
     }
 
-    public void setFinished(Boolean finished) {
+    public void setIsFinished(Boolean finished) {
         isFinished = finished;
     }
 
@@ -106,9 +105,9 @@ public final class Task {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (Task) obj;
-        return Objects.equals(this.taskID, that.taskID) &&
+        return Objects.equals(this.taskId, that.taskId) &&
                 Objects.equals(this.creatorLogin, that.creatorLogin) &&
-                Objects.equals(this.creatorGroupID, that.creatorGroupID) &&
+                Objects.equals(this.creatorGroupId, that.creatorGroupId) &&
                 Objects.equals(this.taskName, that.taskName) &&
                 Objects.equals(this.taskDescription, that.taskDescription) &&
                 Objects.equals(this.taskPriority, that.taskPriority) &&
@@ -118,15 +117,15 @@ public final class Task {
 
     @Override
     public int hashCode() {
-        return Objects.hash(taskID, creatorLogin, creatorGroupID, taskName, taskDescription, taskPriority, isFinished, taskExpiryDate);
+        return Objects.hash(taskId, creatorLogin, creatorGroupId, taskName, taskDescription, taskPriority, isFinished, taskExpiryDate);
     }
 
     @Override
     public String toString() {
         return "Task[" +
-                "taskID=" + taskID + ", " +
+                "taskID=" + taskId + ", " +
                 "creatorLogin=" + creatorLogin + ", " +
-                "creatorGroupID=" + creatorGroupID + ", " +
+                "creatorGroupID=" + creatorGroupId + ", " +
                 "taskName=" + taskName + ", " +
                 "taskDescription=" + taskDescription + ", " +
                 "taskPriority=" + taskPriority + ", " +

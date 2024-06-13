@@ -81,7 +81,7 @@ public class TasksController {
                                 @ModelAttribute Task task) {
         String userName = user.getUsername();
         task.setCreatorLogin(userName);
-        task.setCreatorGroupID(0L);
+        task.setCreatorGroupId(0L);
         taskService.addTask(task);
         return "redirect:/tasks";
     }
