@@ -12,13 +12,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.Optional;
 
 @Repository
 @Transactional
 @PropertySource("queries.properties")
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository{
 
     @Autowired
     private final UserMapper userMapper;
