@@ -26,14 +26,14 @@ body {
 
 p {
     font-family: "Comfortaa", sans-serif;
-    font-size: 1.3vw;
+    font-size: 1.0rem;
     color: var(--font-color);
 }
 
 h1 {
     font-family: "Comfortaa", sans-serif;
-    font-size: 1.5vw;
-    letter-spacing: 0.3vw;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
     color: var(--font-color);
     text-transform: uppercase;
     font-weight: normal;
@@ -60,6 +60,30 @@ h1 {
     justify-content: flex-start;
 }
 
+@media(max-width:900px) {
+    #control_panel {
+        display: none;
+    }
+    #bottom_panel {
+        display: flex;
+        }
+}
+
+#bottom_panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+@media(min-width:901px) {
+    #control_panel {
+        display: flex;
+    }
+    #bottom_panel {
+        display: none;
+    }
+}
+
 #registration{
     position: absolute;
     right: 0;
@@ -67,5 +91,9 @@ h1 {
 }
 
 .subline {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+}
+
+img{
+    width: 2rem;
 }

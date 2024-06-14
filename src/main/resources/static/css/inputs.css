@@ -1,8 +1,8 @@
 button, input {
     font-family: "Comfortaa", sans-serif;
-    font-size: 1.3vw;
+    font-size: 1.0rem;
     color: var(--font-color);
-    margin: 0.2vw;
+    margin: 0.2rem;
     transition: 0.1s ease-out;
     border: 1px solid #ccc;
     border-radius: 0.25em;

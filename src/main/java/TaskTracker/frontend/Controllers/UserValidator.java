@@ -38,7 +38,7 @@ public class UserValidator implements Validator {
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPassword", "NotEmpty", "Поле пароль обязательно для заполнения");
-        if (user.getUserPassword().length() < 8 || user.getUserPassword().length() > 25) {
+        if (user.getUserPassword().length() < 6 || user.getUserPassword().length() > 25) {
             errors.rejectValue("userPassword", "size.user.password", "Пароль должен быть больше 6 и не больше 25 символов");
         }
     }

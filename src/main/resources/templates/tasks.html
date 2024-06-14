@@ -10,14 +10,19 @@
     <link rel="icon" th:href="@{/icons/icon.svg}">
 </head>
 <body>
+<div id="bottom_panel">
+    <form th:action="@{/new}">
+        <input type="submit" value="Новая задача" />
+    </form>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+</div>
 <div id="gridblockslayout">
     <div id="control_panel">
         <h1>Task Tracker</h1>
         <form th:action="@{/new}">
             <input type="submit" value="Новая задача" />
-        </form>
-        <form th:action="@{/myAccount}" method="post">
-            <input type="submit" value="Мой аккаунт"/>
         </form>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Выйти"/>
