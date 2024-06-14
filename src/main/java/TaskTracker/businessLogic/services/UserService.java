@@ -4,5 +4,5 @@ import TaskTracker.database.beans.User;
 
 public interface UserService {
     User getUser(String userLogin);
-    User insertUser(User user);
+    void insertUser(User user);
 }

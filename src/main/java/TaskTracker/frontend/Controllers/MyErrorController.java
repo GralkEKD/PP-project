@@ -17,20 +17,13 @@ public class MyErrorController implements ErrorController {
         String message = "Произошла ошибка: ";
 
         if (status != null) {
-            switch (Integer.valueOf(status.toString())) {
-                case 403:
-                    message = "Доступ запрещён: ";
-                    break;
-                case 404:
-                    message = "Страница не найдена: ";
-                    break;
-                case 405:
-                    message = "Метод заблокирован: ";
-                    break;
-                case 500:
-                    message = "Внутренняя ошибка сервера: ";
-                    break;
-            }
+            message = switch (Integer.parseInt(status.toString())) {
+                case 403 -> "Доступ запрещён: ";
+                case 404 -> "Страница не найдена: ";
+                case 405 -> "Метод заблокирован: ";
+                case 500 -> "Внутренняя ошибка сервера: ";
+                default -> message;
+            };
             message += status;
         }
         model.addAttribute("message", message);

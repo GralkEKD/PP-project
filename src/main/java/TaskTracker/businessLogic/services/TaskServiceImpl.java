@@ -4,8 +4,6 @@ import TaskTracker.businessLogic.requestsHandling.beansExceptions.TaskNotFoundEx
 import TaskTracker.database.beans.Task;
 import TaskTracker.database.repository.TaskRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
