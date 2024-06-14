@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -24,10 +26,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     public User getUser(String userName) {
-        User user = userRepository.getUserByUserLogin(userName)
-                .orElseThrow(() -> new UserNotFoundException(userName));
+        Optional<User> user = userRepository.getUserByUserLogin(userName);
         userServiceLogger.info("Received user: " + user);
-        return user;
+        return user.orElse(null);
     }
 
     @Override
@@ -37,11 +38,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return org.springframework.security.core.userdetails.User
-                .withDefaultPasswordEncoder()
+        return Optional.of(org.springframework.security.core.userdetails.User
+                .builder()
                 .username(getUser(username).getUserName())
                 .password(getUser(username).getUserPassword())
                 .authorities("USER")
-                .build();
+                .build()).orElseThrow(() -> new UserNotFoundException(username));
     }
 }

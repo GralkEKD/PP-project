@@ -1,4 +1,4 @@
-package TaskTracker.frontend;
+package TaskTracker.frontend.Controllers;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;

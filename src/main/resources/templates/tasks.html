@@ -10,42 +10,48 @@
     <link rel="icon" th:href="@{/icons/icon.svg}">
 </head>
 <body>
-<div id="control_panel">
-    <form th:action="@{/new}">
-        <input type="submit" value="Новая задача" />
-    </form>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Выйти"/>
-    </form>
+<div id="gridblockslayout">
+    <div id="control_panel">
+        <h1>Task Tracker</h1>
+        <form th:action="@{/new}">
+            <input type="submit" value="Новая задача" />
+        </form>
+        <form th:action="@{/myAccount}" method="post">
+            <input type="submit" value="Мой аккаунт"/>
+        </form>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
+    </div>
+    <table id="task-table">
+        <thead>
+            <tr>
+                <th>Задача</th>
+                <th>Описание</th>
+                <th>Создатель</th>
+                <th>Дата завершения</th>
+                <th>Время завершения</th>
+                <th>Статус</th>
+                <th>Приоретет</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task: ${tasks}">
+                <td th:text="${task.taskName}"></td>
+                <td th:text="${task.taskDescription}"></td>
+                <td th:text="${task.creatorLogin}"></td>
+                <td><div th:text="${#temporals.format(task.taskExpiryDate, 'dd MMMM yyyy')}"></div></td>
+                <td><div th:text="${#temporals.format(task.taskExpiryDate, 'HH:mm')}"></div></td>
+                <td th:text="${task.isFinished} ? 'Выполнено' : 'Не выполнено'"></td>
+                <td th:text="${task.taskPriority == 0 ? 'Низкий' : ''} + ${task.taskPriority == 1 ? 'Средний' : ''} + ${task.taskPriority == 2 ? 'Высокий' : ''}"></td>
+                <td>
+                    <a th:href="@{'/delete/' + ${task.taskId}}"><img th:src="@{/icons/delete.svg}"></a>
+                    <a th:href="@{'/edit/' + ${task.taskId}}"><img th:src="@{/icons/edit.svg}"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<table id="task-table">
-    <thead>
-        <tr>
-            <th>Задача</th>
-            <th>Описание</th>
-            <th>Создатель</th>
-            <th>Дата завершения</th>
-            <th>Время завершения</th>
-            <th>Статус</th>
-            <th>Приоретет</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="task: ${tasks}">
-            <td th:text="${task.taskName}"></td>
-            <td th:text="${task.taskDescription}"></td>
-            <td th:text="${task.creatorLogin}"></td>
-            <td><div th:text="${#temporals.format(task.taskExpiryDate, 'dd MMMM yyyy')}"></div></td>
-            <td><div th:text="${#temporals.format(task.taskExpiryDate, 'HH:mm')}"></div></td>
-            <td th:text="${task.isFinished} ? 'Выполнено' : 'Не выполнено'"></td>
-            <td th:text="${task.taskPriority == 0 ? 'Низкий' : ''} + ${task.taskPriority == 1 ? 'Средний' : ''} + ${task.taskPriority == 2 ? 'Высокий' : ''}"></td>
-            <td>
-                <a th:href="@{'/delete/' + ${task.taskId}}"><img th:src="@{/icons/delete.svg}"></a>
-                <a th:href="@{'/edit/' + ${task.taskId}}"><img th:src="@{/icons/edit.svg}"></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
 </body>
 </html>

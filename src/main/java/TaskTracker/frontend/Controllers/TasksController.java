@@ -1,4 +1,4 @@
-package TaskTracker.frontend;
+package TaskTracker.frontend.Controllers;
 
 import TaskTracker.businessLogic.services.TaskService;
 import TaskTracker.database.beans.Task;

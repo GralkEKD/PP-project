@@ -49,11 +49,15 @@ h1 {
 
 }
 
-#control_panel{
+#gridblockslayout {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+}
+
+#control_panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 #registration{

@@ -1,4 +1,4 @@
-package TaskTracker.frontend;
+package TaskTracker.frontend.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

@@ -30,19 +30,18 @@ CREATE TABLE UserGroups -- Таблица групп
 	GroupPassword CHARACTER VARYING(30) -- Пароль для входа в группу, группа может быть без пароля, в этом случае это поле равно NULL
 );
 
-INSERT INTO UserGroups (GroupName) VALUES ('GigaGroup');
-
-INSERT INTO UserGroups (GroupID, GroupName) VALUES (0, NULL);
+INSERT INTO UserGroups (GroupID, GroupName) VALUES (0, NULL); --группа для всех пользователей
 
 /*
 Таблица принадлжености пользователей к группам. Каждая строка содержит значения:
 UserName - логин пользователя (ВК - ссылается на таблицу пользователей на UserLogin);
 GroupID - ID группы, к которой пользователь принадлежит (ВК - ссылается на таблицу групп на GroupID);
 */
+
 CREATE TABLE UserAndGroup
 (
-	UserLogin CHARACTER VARYING(30) REFERENCES users (UserLogin) ON DELETE CASCADE,
-	GroupID INTEGER REFERENCES usergroups (GroupID) ON DELETE CASCADE,
+	UserName CHARACTER VARYING(30) REFERENCES users (UserName) ON DELETE CASCADE,
+	GroupID INTEGER REFERENCES UserGroups (GroupID) ON DELETE CASCADE,
 	PRIMARY KEY (UserName, GroupID) -- Составной ПК - состоит из логина пользователя и ID группы
 );
 
