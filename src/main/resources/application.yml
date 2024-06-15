@@ -4,3 +4,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/TaskTracker
     username: postgres
     password: "00000"
+  profiles:
+    active: default
+logging:
+  file:
+    name:
+      ApplicationLog.log
+server:
+  port:
+    80

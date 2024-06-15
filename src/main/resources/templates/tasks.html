@@ -10,23 +10,9 @@
     <link rel="icon" th:href="@{/icons/icon.svg}">
 </head>
 <body>
-<div id="bottom_panel">
-    <form th:action="@{/new}">
-        <input type="submit" value="Новая задача" />
-    </form>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Выйти"/>
-    </form>
-</div>
-<div id="gridblockslayout">
     <div id="control_panel">
-        <h1>Task Tracker</h1>
-        <form th:action="@{/new}">
-            <input type="submit" value="Новая задача" />
-        </form>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Выйти"/>
-        </form>
+        <a th:href="@{/new}"><button><img th:src="@{/icons/add.svg}"></button></a>
+        <a th:href="@{/logout}"><button><img th:src="@{/icons/logout.svg}"></button></a>
     </div>
     <table id="task-table">
         <thead>
@@ -57,6 +43,5 @@
             </tr>
         </tbody>
     </table>
-</div>
 </body>
 </html>

@@ -6,6 +6,10 @@
   --option-bg: #06817b;
   --select-bg: rgba(255, 255, 255, 0.1);
   --font-color: #ffffff;
+  --background-gradient: linear-gradient(to right top, #6b79d1, #1886cd, #008db9, #00909f, #438f87, #539788, #639f8a, #73a68c, #74bba1, #71d0b9);
+  --slider-track-color: #f1f1f1;
+  --slider-scrollbar-thumb-color: #40907b;
+  --slider-hover-scrollbar-thumb-color: #1d8a6d;
 }
 
 * {
@@ -18,7 +22,7 @@ html {
 }
 
 body {
-	background-image: linear-gradient(to right top, #6b79d1, #1886cd, #008db9, #00909f, #438f87, #539788, #639f8a, #73a68c, #74bba1, #71d0b9);
+	background-image: var(--background-gradient);
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -56,32 +60,10 @@ h1 {
 
 #control_panel{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-@media(max-width:900px) {
-    #control_panel {
-        display: none;
-    }
-    #bottom_panel {
-        display: flex;
-        }
-}
-
-#bottom_panel{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-@media(min-width:901px) {
-    #control_panel {
-        display: flex;
-    }
-    #bottom_panel {
-        display: none;
-    }
+    flex-direction: column-reverse;
+    position: fixed;
+    right: 0;
+    bottom: 0;
 }
 
 #registration{
@@ -96,4 +78,20 @@ h1 {
 
 img{
     width: 2rem;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: var(--slider-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--slider-scrollbar-thumb-color);
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--slider-hover-scrollbar-thumb-color);
 }

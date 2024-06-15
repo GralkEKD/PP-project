@@ -1,13 +1,19 @@
   #task-table {
     font-family: "Comfortaa", sans-serif;
     color: var(--font-color);
-    font-size: 1.2vw;
-    width: 100vw;
+    font-size: 1.0rem;
+    width: 100%;
     border-collapse: collapse;
     background: transparent;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     table-layout: fixed;
   }
+
+   @media screen and (max-width: 900px) {
+      #task-table {
+        font-size: 0.5rem;
+      }
+    }
   
   #task-table th {
     padding: 12px 15px;
@@ -23,13 +29,4 @@
 
   #task-table tr:nth-child(even) {
       background: var(--select-bg);
-  }
-
-  @media(max-width:900px) {
-     #task-table {
-     font-size: 1.8vw;
-     }
-     #task-table tr {
-        font-size: 0.8rem;
-     }
   }

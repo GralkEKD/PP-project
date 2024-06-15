@@ -38,10 +38,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = getUser(username);
         return Optional.of(org.springframework.security.core.userdetails.User
                 .builder()
-                .username(getUser(username).getUserName())
-                .password(getUser(username).getUserPassword())
+                .username(user.getUserName())
+                .password(user.getUserPassword())
                 .authorities("USER")
                 .build()).orElseThrow(() -> new UserNotFoundException(username));
     }
