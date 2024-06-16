@@ -9,7 +9,7 @@ spring:
 logging:
   file:
     name:
-      ApplicationLog.log
+      app/ApplicationLog.log
 server:
   port:
     80

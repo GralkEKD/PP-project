@@ -1,5 +1,6 @@
 package TaskTracker.frontend.Controllers;
 
+import TaskTracker.businessLogic.requestsHandling.beansExceptions.TaskNotFoundException;
 import TaskTracker.businessLogic.services.TaskService;
 import TaskTracker.database.beans.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,13 @@ public class TasksController {
     public ModelAndView showEditPage(@PathVariable(name="id") Long id,
                                      @AuthenticationPrincipal UserDetails user){
         ModelAndView editView = new ModelAndView("edit");
-
-        Task task = taskService.getTask(id);
+        Task task;
+        try {
+            task = taskService.getTask(id);
+        }
+        catch (TaskNotFoundException ex){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
 
         if(!task.getCreatorLogin().equals(user.getUsername())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
@@ -62,7 +68,13 @@ public class TasksController {
     public String deleteTask(@PathVariable(name="id") Long id,
                              @AuthenticationPrincipal UserDetails user){
 
-        Task task = taskService.getTask(id);
+        Task task;
+        try {
+            task = taskService.getTask(id);
+        }
+        catch (TaskNotFoundException ex){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
         if(!task.getCreatorLogin().equals(user.getUsername())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }

@@ -10,15 +10,11 @@
 </head>
 <body>
 <div id="centered_box_layout">
-    <h1>Добро пожаловать в</h1>
     <h1>Task Manager</h1>
-    <p>Помощник в отслеживании Вашей активности</p>
-    <form th:action="@{/tasks}">
-        <input type="submit" value="Начать" />
+    <p>Данный проект создан в обчающих целях</p>
+    <form th:action="@{/home}">
+        <input type="submit" value="На главную" />
     </form>
-</div>
-<div id="control_panel">
-    <a th:href="@{/about}"><button><img th:src="@{/icons/about.svg}"></button></a>
 </div>
 </body>
 </html>
