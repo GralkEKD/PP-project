@@ -78,7 +78,18 @@ h1 {
 
 img{
     width: 2rem;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
+
+@media screen and (max-width: 900px) {
+      #icons{
+          width: 1rem;
+      }
+    }
 
 ::-webkit-scrollbar {
     width: 5px;

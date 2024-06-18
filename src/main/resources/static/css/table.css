@@ -16,13 +16,13 @@
     }
   
   #task-table th {
-    padding: 12px 15px;
+    padding: 0.2rem;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
   #task-table td {
-    padding: 12px 15px;
+    padding: 0.2rem;
     max-width: 25vw;
     overflow: hidden;
   }

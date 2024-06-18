@@ -37,8 +37,8 @@
                 <td th:text="${task.isFinished} ? 'Выполнено' : 'Не выполнено'"></td>
                 <td th:text="${task.taskPriority == 0 ? 'Низкий' : ''} + ${task.taskPriority == 1 ? 'Средний' : ''} + ${task.taskPriority == 2 ? 'Высокий' : ''}"></td>
                 <td>
-                    <a th:href="@{'/delete/' + ${task.taskId}}"><img th:src="@{/icons/delete.svg}"></a>
-                    <a th:href="@{'/edit/' + ${task.taskId}}"><img th:src="@{/icons/edit.svg}"></a>
+                    <a th:href="@{'/delete/' + ${task.taskId}}"><img id="icons" th:src="@{/icons/delete.svg}"></a>
+                    <a th:href="@{'/edit/' + ${task.taskId}}"><img id="icons" th:src="@{/icons/edit.svg}"></a>
                 </td>
             </tr>
         </tbody>
