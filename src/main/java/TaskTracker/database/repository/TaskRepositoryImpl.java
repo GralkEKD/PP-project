@@ -1,7 +1,10 @@
 package TaskTracker.database.repository;
 
+import TaskTracker.businessLogic.requestsHandling.beansExceptions.UserNotFoundException;
 import TaskTracker.database.beans.Task;
+import TaskTracker.database.beans.User;
 import TaskTracker.database.map.TaskMapper;
+import TaskTracker.database.map.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class TaskRepositoryImpl implements TaskRepository{
 
     private final TaskMapper taskMapper;
+    private final UserMapper userMapper;
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private static final Logger logger = LoggerFactory.getLogger(TaskRepositoryImpl.class);
@@ -32,9 +36,12 @@ public class TaskRepositoryImpl implements TaskRepository{
     String updateTask;
     @Value("${addTask}")
     String addTask;
+    @Value("${getUserByLogin}")
+    String getUserByLogin;
 
-    public TaskRepositoryImpl(TaskMapper taskMapper, NamedParameterJdbcTemplate jdbcTemplate) {
+    public TaskRepositoryImpl(TaskMapper taskMapper, UserMapper userMapper, NamedParameterJdbcTemplate jdbcTemplate) {
         this.taskMapper = taskMapper;
+        this.userMapper = userMapper;
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -54,12 +61,20 @@ public class TaskRepositoryImpl implements TaskRepository{
     public List<Task> getTasksOfUser(String userName) {
         var params = new MapSqlParameterSource();
         params.addValue("userName", userName);
-        logger.info("Executing SQL " + getTasksOfUser);
-        return jdbcTemplate.query(
-                getTasksOfUser,
+        Optional<User> userCheck = jdbcTemplate.query(
+                getUserByLogin,
                 params,
-                taskMapper
-        );
+                userMapper
+        ).stream().findFirst();
+        if (userCheck.isPresent()) {
+            logger.info("Executing SQL " + getTasksOfUser);
+            return jdbcTemplate.query(
+                    getTasksOfUser,
+                    params,
+                    taskMapper
+            );
+        }
+        throw new UserNotFoundException(userName);
     }
 
     @Override

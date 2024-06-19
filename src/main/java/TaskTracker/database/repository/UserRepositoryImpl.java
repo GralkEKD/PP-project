@@ -4,7 +4,6 @@ import TaskTracker.database.beans.User;
 import TaskTracker.database.map.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -19,9 +18,7 @@ import java.util.Optional;
 @PropertySource("queries.properties")
 public class UserRepositoryImpl implements UserRepository{
 
-    @Autowired
     private final UserMapper userMapper;
-    @Autowired
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private static final Logger userRepositoryLogger = LoggerFactory.getLogger(UserRepositoryImpl.class);

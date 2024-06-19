@@ -1,6 +1,5 @@
 package TaskTracker.businessLogic.services;
 
-import TaskTracker.businessLogic.requestsHandling.beansExceptions.UserNotFoundException;
 import TaskTracker.database.beans.User;
 import TaskTracker.database.map.UserMapper;
 import TaskTracker.database.repository.UserRepositoryImpl;
@@ -24,7 +23,7 @@ public class UserServiceImplTest {
             if (userLogin.equals("Aleksandr")) {
                 return Optional.of(new User("Aleksandr", "1234"));
             }
-            throw new UserNotFoundException(userLogin);
+            return Optional.empty();
         }
     };
 
@@ -36,11 +35,8 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void givenNonExistingUserLogin_whenGetUserByUserLogin_thenThrowUserNotFoundException() {
-        Assertions.assertThrows(
-                UserNotFoundException.class,
-                () -> new UserServiceImpl(mockRepository).getUser("FakeAleksandr"),
-                "Wrong User Login: \"FakeAleksandr\""
-        );
+    void givenNonExistingUserLogin_whenGetUserByUserLogin_thenReturnNull() {
+        User actualUser = new UserServiceImpl(mockRepository).getUser("FakeAleksandr");
+        Assertions.assertNull(actualUser);
     }
 }
