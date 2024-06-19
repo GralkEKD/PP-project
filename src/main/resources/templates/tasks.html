@@ -14,7 +14,7 @@
         <a th:href="@{/new}"><button><img th:src="@{/icons/add.svg}"></button></a>
         <a th:href="@{/logout}"><button><img th:src="@{/icons/logout.svg}"></button></a>
     </div>
-    <table id="task-table">
+    <table id="task-table" th:if="${!tasks.isEmpty()}">
         <thead>
             <tr>
                 <th>Задача</th>
@@ -43,5 +43,11 @@
             </tr>
         </tbody>
     </table>
+    <div th:if="${tasks.isEmpty()}" id="centered_box_layout">
+        <h1>У Вас пока нет задач</h1>
+        <form th:action="@{/new}">
+            <input type="submit" value="Создать задачу" />
+        </form>
+    </div>
 </body>
 </html>
