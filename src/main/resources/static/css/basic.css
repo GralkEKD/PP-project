@@ -53,11 +53,6 @@ h1 {
 
 }
 
-#gridblockslayout {
-    display: flex;
-    flex-direction: row;
-}
-
 #control_panel{
     display: flex;
     flex-direction: column-reverse;
