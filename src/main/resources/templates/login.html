@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Task Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/basic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/inputs.css}">
+    <link rel="icon" th:href="@{/icons/icon.svg}">
+</head>
+<body>
+<a id="registration" th:href="@{/registration}"><img th:src="@{/icons/profile.svg}"></a>
+<div id="centered_box_layout">
+    <h1>Вход в аккаунт</h1>
+    <p class="subline" th:if="${param.error}">Неверный пароль или логин.</p>
+    <p class="subline" th:if="${param.logout}">Вы вышли из аккаунта.</p>
+    <div sec:authorize="isAuthenticated()">
+        <p>Вы уже вошли как <span th:remove="tag" sec:authentication="name"></span></p>
+        <form th:action="@{/tasks}">
+            <input type="submit" value="К задачам" />
+        </form>
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div><p>Логин</p></div>
+        <div><input type="text" name="username"/></div>
+        <div><p>Пароль</p></div>
+        <div><input type="password" name="password"/></div>
+        <div><input type="submit" value="Войти"/><input type="reset" value="Очистить"/></div>
+    </form>
+</div>
+</body>
+</html>

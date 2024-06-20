@@ -3,4 +3,13 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/TaskTracker
     username: postgres
-    password: свой пишите :)
+    password: "00000"
+  profiles:
+    active: default
+logging:
+  file:
+    name:
+      logs/ApplicationLog.log
+server:
+  port:
+    8080

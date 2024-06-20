@@ -1,0 +1,25 @@
+select {
+    font-size: 1.0rem;
+    font-family: "Comfortaa", sans-serif;
+    color: var(--font-color);
+    margin: 0.2rem;
+    transition: 0.1s ease-out;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 15rem;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, var(--select-bg) 3em, var(--arrow-bg) 3em);
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    outline: none;
+}
+
+option {
+    background-color: var(--option-bg);
+    height: 15rem;
+}

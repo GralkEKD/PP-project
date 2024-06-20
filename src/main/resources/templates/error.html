@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Task Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/basic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/inputs.css}">
+    <link rel="icon" th:href="@{/icons/icon.svg}">
+</head>
+<body>
+<div id="centered_box_layout">
+    <h1>Что-то пошло не так!</h1>
+    <p th:text="${message}" />
+    <form th:action="@{/}">
+        <input type="submit" value="Выйти" />
+    </form>
+</div>
+</body>
+</html>

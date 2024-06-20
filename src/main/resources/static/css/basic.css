@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+:root {
+  --arrow-bg: rgba(255, 255, 255, 0.3);
+  --arrow-icon: url(../icons/arrow.svg);
+  --option-bg: #06817b;
+  --select-bg: rgba(255, 255, 255, 0.1);
+  --font-color: #ffffff;
+  --background-gradient: linear-gradient(to right top, #6b79d1, #1886cd, #008db9, #00909f, #438f87, #539788, #639f8a, #73a68c, #74bba1, #71d0b9);
+  --slider-track-color: #f1f1f1;
+  --slider-scrollbar-thumb-color: #40907b;
+  --slider-hover-scrollbar-thumb-color: #1d8a6d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+	background-image: var(--background-gradient);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.0rem;
+    color: var(--font-color);
+}
+
+h1 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    color: var(--font-color);
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+#centered_box_layout {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     padding: 0px;
+     text-align: center;
+
+}
+
+#control_panel{
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+#registration{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.subline {
+    font-size: 0.9rem;
+}
+
+img{
+    width: 2rem;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+@media screen and (max-width: 900px) {
+      #icons{
+          width: 1rem;
+      }
+    }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: var(--slider-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--slider-scrollbar-thumb-color);
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--slider-hover-scrollbar-thumb-color);
+}
