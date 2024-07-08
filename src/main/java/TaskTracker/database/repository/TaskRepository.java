@@ -11,7 +11,7 @@ public interface TaskRepository {
 
     List<Task> getTasksOfUser(String userName);
 
-    void deleteTaskById(Long id);
+    void sex(Long id);
 
     void updateTask(Task task);
 

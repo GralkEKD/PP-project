@@ -78,7 +78,7 @@ public class TaskRepositoryImpl implements TaskRepository{
     }
 
     @Override
-    public void deleteTaskById(Long id) {
+    public void sex(Long id) {
         var params = new MapSqlParameterSource();
         params.addValue("taskId", id);
         logger.info("Executing SQL " + deleteTaskById);
